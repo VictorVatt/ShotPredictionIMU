@@ -5,7 +5,7 @@ from scipy.stats import kurtosis, skew
 import matplotlib.pyplot as plt
 
 # on importe les données du fichier .mat format de données matlab
-data = loadmat("data/new_data_all_7.mat")
+data = loadmat("../data/new_data_all_7.mat")
 
 data_label = np.array(data["all_data_label"], dtype=object)
 data = np.array(data["all_data"], dtype=object)
