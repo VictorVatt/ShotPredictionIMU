@@ -178,7 +178,7 @@ if __name__ == "__main__":
             print("Setting filter profile failed!");
 
         print("Setting quaternion CSV output")
-        device.setLogOptions(xsensdot_pc_sdk.XsLogOptions_Quaternion)
+        device.setLogOptions(xsensdot_pc_sdk.XSO_Calibrate)
 
         logFileName = "logfile_" + portInfo.bluetoothAddress().replace(':', '-') + ".csv"
         print(f"Enable logging to: {logFileName}")
@@ -186,7 +186,7 @@ if __name__ == "__main__":
             print(f"Failed to enable logging. Reason: {manager.lastResultText()}")
 
         print("Putting device into measurement mode.")
-        if not device.startMeasurement(xsensdot_pc_sdk.XsPayloadMode_ExtendedEuler):
+        if not device.startMeasurement(xsensdot_pc_sdk.XsPayloadMode_HighFidelity):
             print(f"Could not put device into measurement mode. Reason: {manager.lastResultText()}")
             continue
 
