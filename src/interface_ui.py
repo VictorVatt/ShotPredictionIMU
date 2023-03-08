@@ -1,0 +1,88 @@
+from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect,
+                            QSize)
+from PySide6.QtWidgets import (QGraphicsView, QGroupBox, QLCDNumber,
+                               QLabel, QPushButton, QRadioButton)
+
+
+class Ui_mainWindow(object):
+    def setupUi(self, mainWindow):
+        if not mainWindow.objectName():
+            mainWindow.setObjectName(u"mainWindow")
+        mainWindow.resize(1022, 854)
+        mainWindow.setMinimumSize(QSize(1022, 854))
+        mainWindow.setMaximumSize(QSize(1022, 854))
+        mainWindow.setAutoFillBackground(False)
+        mainWindow.setStyleSheet(u"background-color: rgb(22, 27, 34);")
+
+
+        self.recordButton = QPushButton(mainWindow)
+        self.recordButton.setObjectName(u"recordButton")
+        self.recordButton.setGeometry(QRect(450, 780, 221, 61))
+        self.recordButton.setStyleSheet(u"background-color: rgb(213, 220, 60);\n""color: rgb(255, 255, 255);\n""font: 75 20pt \"Sharp Sans Display No2\";\n""border-radius : 10px;")
+        self.laterality = QGroupBox(mainWindow)
+        self.laterality.setObjectName(u"laterality")
+        self.laterality.setGeometry(QRect(20, 120, 231, 91))
+        self.laterality.setStyleSheet(u"color: rgb(255, 255, 255);\n""font: 75 16pt \"Sharp Sans Display No2\";")
+        self.rightHanded = QRadioButton(self.laterality)
+        self.rightHanded.setObjectName(u"rightHanded")
+        self.rightHanded.setGeometry(QRect(130, 30, 81, 51))
+        self.rightHanded.setStyleSheet(u"font: 75 8pt \"Sharp Sans Display No2\";\n""font: 75 14pt \"Sharp Sans Display No2\";")
+        self.leftHanded = QRadioButton(self.laterality)
+        self.leftHanded.setObjectName(u"leftHanded")
+        self.leftHanded.setGeometry(QRect(10, 30, 101, 51))
+        self.leftHanded.setStyleSheet(u"font: 75 8pt \"Sharp Sans Display No2\";\n""font: 75 14pt \"Sharp Sans Display No2\";")
+        self.title = QLabel(mainWindow)
+        self.title.setObjectName(u"title")
+        self.title.setGeometry(QRect(360, 20, 361, 71))
+        self.title.setStyleSheet(u"font: 75 36pt \"Sharp Sans Display No2\";\n""color: rgb(213, 220, 60);")
+        self.IMUinformations = QGroupBox(mainWindow)
+        self.IMUinformations.setObjectName(u"IMUinformations")
+        self.IMUinformations.setGeometry(QRect(260, 120, 741, 371))
+        self.IMUinformations.setStyleSheet(u"font: 75 14pt \"Sharp Sans Display No2\";\n""color: rgb(255, 255, 255);")
+        self.dot_img = QLabel(self.IMUinformations)
+        self.dot_img.setObjectName(u"dot_img")
+        self.dot_img.setGeometry(QRect(570, 20, 161, 201))
+        self.dot_img.setStyleSheet(u"image: url(:/got_image/dot_img2-removebg-preview.png);")
+        self.connexion_statut = QLabel(self.IMUinformations)
+        self.connexion_statut.setObjectName(u"connexion_statut")
+        self.connexion_statut.setGeometry(QRect(270, 140, 201, 101))
+        self.connexion_statut.setStyleSheet(u"color: rgb(193, 78, 78);")
+        self.timer_ldc = QLCDNumber(mainWindow)
+        self.timer_ldc.setObjectName(u"timer_ldc")
+        self.timer_ldc.setGeometry(QRect(20, 550, 221, 71))
+        self.timer_ldc.setStyleSheet(u"color: rgb(213, 220, 60);\n""")
+        self.timer_ldc.setProperty("value", 0.000000000000000)
+        self.timer_label = QLabel(mainWindow)
+        self.timer_label.setObjectName(u"timer_label")
+        self.timer_label.setGeometry(QRect(20, 520, 211, 21))
+        self.timer_label.setStyleSheet(u"color: rgb(255, 255, 255);\n""font: 75 20pt \"Sharp Sans Display No2\";")
+        self.results_label = QLabel(mainWindow)
+        self.results_label.setObjectName(u"results_label")
+        self.results_label.setGeometry(QRect(260, 510, 211, 41))
+        self.results_label.setStyleSheet(u"color: rgb(255, 255, 255);\n""font: 75 20pt \"Sharp Sans Display No2\";")
+        self.results_graph = QGraphicsView(mainWindow)
+        self.results_graph.setObjectName(u"results_graph")
+        self.results_graph.setGeometry(QRect(260, 551, 741, 211))
+
+        self.retranslateUi(mainWindow)
+
+        QMetaObject.connectSlotsByName(mainWindow)
+    # setupUi
+
+    def retranslateUi(self, mainWindow):
+        mainWindow.setWindowTitle(QCoreApplication.translate("mainWindow", u"Form", None))
+        self.recordButton.setText(QCoreApplication.translate("mainWindow", u"Start recording", None))
+        self.laterality.setTitle(QCoreApplication.translate("mainWindow", u"Lat\u00e9ralit\u00e9", None))
+        self.rightHanded.setText(QCoreApplication.translate("mainWindow", u"Droitier", None))
+        self.leftHanded.setText(QCoreApplication.translate("mainWindow", u"Gaucher", None))
+        self.title.setText(QCoreApplication.translate("mainWindow", u"TennisPrediction", None))
+# if QT_CONFIG(tooltip)
+        self.IMUinformations.setToolTip(QCoreApplication.translate("mainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n""<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n""p, li { white-space: pre-wrap; }\n""</style></head><body style=\" font-family:'Sharp Sans Display No2'; font-size:14pt; font-weight:72; font-style:normal;\">\n""<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt; color:#aa0000;\">Informations g\u00e9n\u00e9rale sur l'IMU connect\u00e9</span></p></body></html>", None))
+# endif // QT_CONFIG(tooltip)
+        self.IMUinformations.setTitle(QCoreApplication.translate("mainWindow", u"Informations IMU", None))
+        self.dot_img.setText("")
+        self.connexion_statut.setText(QCoreApplication.translate("mainWindow", u"Aucun IMU connect\u00e9 ...", None))
+        self.timer_label.setText(QCoreApplication.translate("mainWindow", u"Timer ", None))
+        self.results_label.setText(QCoreApplication.translate("mainWindow", u"Resultats", None))
+    # retranslateUi
+
