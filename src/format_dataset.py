@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from scipy.stats import kurtosis, skew
 import matplotlib.pyplot as plt
-
+from sklearn import preprocessing
 # on importe les données du fichier .mat format de données matlab
 data = loadmat("../data/new_data_all_7.mat")
 
@@ -25,6 +25,7 @@ for N_sujet in range(len(data)):
         donne_label = np.array(data_label[N_sujet][0][N_coup])
         row = list()
         for N_cols in range(6):
+            donnee[:, N_cols] = (donnee[:, N_cols]-np.min(donnee[:, N_cols]))/(np.max(donnee[:, N_cols])-np.min(donnee[:, N_cols]))
             mean = np.mean(donnee[:, N_cols])
             sd = np.std(donnee[:, N_cols])
             skewness = skew(donnee[:, N_cols])
@@ -40,4 +41,5 @@ for N_sujet in range(len(data)):
         row.append(donne_label[0][0])
         df.loc[len(df)] = row
 
-df.to_csv("training_dataset")
+print(df)
+df.to_csv("training_dataset_normalise")
